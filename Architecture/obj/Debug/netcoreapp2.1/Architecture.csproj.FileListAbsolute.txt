@@ -29,3 +29,4 @@ C:\Users\migle\source\repos\Architecture\Architecture\obj\Debug\netcoreapp2.1\Ra
 C:\Users\migle\source\repos\Architecture\Architecture\obj\Debug\netcoreapp2.1\Razor\Views\Sale\Index.g.cshtml.cs
 C:\Users\migle\source\repos\Architecture\Architecture\obj\Debug\netcoreapp2.1\Razor\Views\Sale\Edit.g.cshtml.cs
 C:\Users\migle\source\repos\Architecture\Architecture\obj\Debug\netcoreapp2.1\Razor\Views\Sale\Delete.g.cshtml.cs
+C:\Users\migle\source\repos\Architecture\Architecture\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
