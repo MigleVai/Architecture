@@ -1,0 +1,17 @@
+C:\Users\migle\source\repos\Architecture\Architecture.API\bin\Debug\netcoreapp2.1\Architecture.API.deps.json
+C:\Users\migle\source\repos\Architecture\Architecture.API\bin\Debug\netcoreapp2.1\Architecture.API.runtimeconfig.json
+C:\Users\migle\source\repos\Architecture\Architecture.API\bin\Debug\netcoreapp2.1\Architecture.API.runtimeconfig.dev.json
+C:\Users\migle\source\repos\Architecture\Architecture.API\bin\Debug\netcoreapp2.1\Architecture.API.dll
+C:\Users\migle\source\repos\Architecture\Architecture.API\bin\Debug\netcoreapp2.1\Architecture.API.pdb
+C:\Users\migle\source\repos\Architecture\Architecture.API\bin\Debug\netcoreapp2.1\Architecture.Domain.dll
+C:\Users\migle\source\repos\Architecture\Architecture.API\bin\Debug\netcoreapp2.1\Architecture.Domain.pdb
+C:\Users\migle\source\repos\Architecture\Architecture.API\obj\Debug\netcoreapp2.1\Architecture.API.csprojAssemblyReference.cache
+C:\Users\migle\source\repos\Architecture\Architecture.API\obj\Debug\netcoreapp2.1\Architecture.API.csproj.CoreCompileInputs.cache
+C:\Users\migle\source\repos\Architecture\Architecture.API\obj\Debug\netcoreapp2.1\Architecture.API.RazorAssemblyInfo.cache
+C:\Users\migle\source\repos\Architecture\Architecture.API\obj\Debug\netcoreapp2.1\Architecture.API.RazorAssemblyInfo.cs
+C:\Users\migle\source\repos\Architecture\Architecture.API\obj\Debug\netcoreapp2.1\Architecture.API.AssemblyInfoInputs.cache
+C:\Users\migle\source\repos\Architecture\Architecture.API\obj\Debug\netcoreapp2.1\Architecture.API.AssemblyInfo.cs
+C:\Users\migle\source\repos\Architecture\Architecture.API\obj\Debug\netcoreapp2.1\Architecture.API.RazorTargetAssemblyInfo.cache
+C:\Users\migle\source\repos\Architecture\Architecture.API\obj\Debug\netcoreapp2.1\Architecture.API.csproj.CopyComplete
+C:\Users\migle\source\repos\Architecture\Architecture.API\obj\Debug\netcoreapp2.1\Architecture.API.dll
+C:\Users\migle\source\repos\Architecture\Architecture.API\obj\Debug\netcoreapp2.1\Architecture.API.pdb
