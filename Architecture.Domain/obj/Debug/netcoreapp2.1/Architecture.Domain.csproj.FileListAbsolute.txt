@@ -1,0 +1,9 @@
+C:\Users\migle\source\repos\Architecture\Architecture.Domain\bin\Debug\netcoreapp2.1\Architecture.Domain.deps.json
+C:\Users\migle\source\repos\Architecture\Architecture.Domain\bin\Debug\netcoreapp2.1\Architecture.Domain.dll
+C:\Users\migle\source\repos\Architecture\Architecture.Domain\bin\Debug\netcoreapp2.1\Architecture.Domain.pdb
+C:\Users\migle\source\repos\Architecture\Architecture.Domain\obj\Debug\netcoreapp2.1\Architecture.Domain.csproj.CoreCompileInputs.cache
+C:\Users\migle\source\repos\Architecture\Architecture.Domain\obj\Debug\netcoreapp2.1\Architecture.Domain.AssemblyInfoInputs.cache
+C:\Users\migle\source\repos\Architecture\Architecture.Domain\obj\Debug\netcoreapp2.1\Architecture.Domain.AssemblyInfo.cs
+C:\Users\migle\source\repos\Architecture\Architecture.Domain\obj\Debug\netcoreapp2.1\Architecture.Domain.dll
+C:\Users\migle\source\repos\Architecture\Architecture.Domain\obj\Debug\netcoreapp2.1\Architecture.Domain.pdb
+C:\Users\migle\source\repos\Architecture\Architecture.Domain\obj\Debug\netcoreapp2.1\Architecture.Domain.csprojAssemblyReference.cache
