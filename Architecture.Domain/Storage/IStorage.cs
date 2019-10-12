@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Architecture.Domain.Storage
 {
-    public interface IStorage
+    public interface IStorage<T> where T: class
     {
-        void Add(SaleModel sale);
-        SaleModel Get(Guid id);
-        List<SaleModel> GetAll();
+        void Add(T sale);
+        T Get(Guid id);
+        IEnumerable<T> GetAll();
         void Remove(Guid id);
+        void Save();
     }
 }

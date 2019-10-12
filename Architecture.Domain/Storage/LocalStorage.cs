@@ -1,4 +1,5 @@
 ﻿using Architecture.Domain;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,28 +7,41 @@ using System.Threading.Tasks;
 
 namespace Architecture.Domain.Storage
 {
-    public class LocalStorage : IStorage
+    public class LocalStorage<T>: IStorage<T> where T : class
     {
-        public static List<SaleModel> SaleList = new List<SaleModel>();
+        private SaleDBContext _context = null;
+        private DbSet<T> table = null;
 
-        public void Add(SaleModel sale)
+        public LocalStorage(SaleDBContext saleDB)
         {
-            SaleList.Add(sale);
+            _context = saleDB;
+            table = _context.Set<T>();
         }
 
-        public SaleModel Get(Guid id)
+        public IEnumerable<T> GetAll()
         {
-            return SaleList.FirstOrDefault(a => a.Id == id);
+            return table.ToList();
         }
 
-        public List<SaleModel> GetAll()
+        public T Get(Guid id)
         {
-            return SaleList;
+            return table.Find(id);
+        }
+
+        public void Add(T obj)
+        {
+            table.Add(obj);
         }
 
         public void Remove(Guid id)
         {
-            SaleList.RemoveAll(a => a.Id == id);
+            T existing = table.Find(id);
+            table.Remove(existing);
+        }
+
+        public void Save()
+        {
+            _context.SaveChanges();
         }
     }
 }

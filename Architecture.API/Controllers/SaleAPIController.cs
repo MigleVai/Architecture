@@ -6,13 +6,13 @@ using Architecture.Domain.Storage;
 
 namespace Architecture.API.Controllers
 {
-    [Route("api/Sale")]
+    [Route("api/saleBackend")]
     [ApiController]
     public class SaleAPIController : ControllerBase
     {
-        private IStorage _storage;
+        private IStorage<SaleModel> _storage;
 
-        public SaleAPIController(IStorage storage)
+        public SaleAPIController(IStorage<SaleModel> storage)
         {
             _storage = storage;
         }
@@ -59,6 +59,7 @@ namespace Architecture.API.Controllers
 
             _storage.Remove(id);
             _storage.Add(saleModel);
+            _storage.Save();
 
             return NoContent();
         }
@@ -74,6 +75,7 @@ namespace Architecture.API.Controllers
 
             saleModel.Id = Guid.NewGuid();
             _storage.Add(saleModel);
+            _storage.Save();
 
             return CreatedAtAction("GetSaleModel", new { id = saleModel.Id }, saleModel);
         }
@@ -94,6 +96,7 @@ namespace Architecture.API.Controllers
             }
 
             _storage.Remove(saleModel.Id);
+            _storage.Save();
 
             return Ok(saleModel);
         }

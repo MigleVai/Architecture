@@ -21,7 +21,7 @@ namespace XUnitTestProject
         {
             var id = Guid.NewGuid();
             // Arrange
-            var mockRepository = new Mock<IStorage>();
+            var mockRepository = new Mock<IStorage<SaleModel>>();
             mockRepository.Setup(x => x.Get(It.IsAny<Guid>())).Returns(new SaleModel
             {
                 Id = id
@@ -44,7 +44,7 @@ namespace XUnitTestProject
         {
             var id = Guid.NewGuid();
             // Arrange
-            var mockRepository = new Mock<IStorage>();
+            var mockRepository = new Mock<IStorage<SaleModel>>();
             var controller = new SaleAPIController(mockRepository.Object);
             controller.ModelState.AddModelError("Error", "Error");
             // Act
@@ -58,7 +58,7 @@ namespace XUnitTestProject
         public void GetSaleModelIDNotFoundTest()
         {
             // Arrange
-            var mockRepository = new Mock<IStorage>().Object;
+            var mockRepository = new Mock<IStorage<SaleModel>>().Object;
             var controller = new SaleAPIController(mockRepository);
             var fakeId = Guid.NewGuid();
             // Act
@@ -75,7 +75,7 @@ namespace XUnitTestProject
         {
             var id = Guid.NewGuid();
             // Arrange
-            var mockRepository = new Mock<IStorage>();
+            var mockRepository = new Mock<IStorage<SaleModel>>();
             mockRepository.Setup(x => x.GetAll()).Returns(new List<SaleModel>());
             var controller = new SaleAPIController(mockRepository.Object);
  
@@ -92,7 +92,7 @@ namespace XUnitTestProject
         {
             var id = Guid.NewGuid();
             // Arrange
-            var mockRepository = new Mock<IStorage>();
+            var mockRepository = new Mock<IStorage<SaleModel>>();
             mockRepository.Setup(x => x.GetAll()).Returns(new List<SaleModel> {
                 new SaleModel()
             });
@@ -111,7 +111,7 @@ namespace XUnitTestProject
         {
             var id = Guid.NewGuid();
             // Arrange
-            var mockRepository = new Mock<IStorage>();
+            var mockRepository = new Mock<IStorage<SaleModel>>();
             var controller = new SaleAPIController(mockRepository.Object);
 
             // Act
@@ -127,7 +127,7 @@ namespace XUnitTestProject
         {
             var id = Guid.NewGuid();
             // Arrange
-            var mockRepository = new Mock<IStorage>();
+            var mockRepository = new Mock<IStorage<SaleModel>>();
             var controller = new SaleAPIController(mockRepository.Object);
             controller.ModelState.AddModelError("Error", "Error");
             // Act
@@ -142,7 +142,7 @@ namespace XUnitTestProject
         {
             var id = Guid.NewGuid();
             // Arrange
-            var mockRepository = new Mock<IStorage>();
+            var mockRepository = new Mock<IStorage<SaleModel>>();
             mockRepository.Setup(x => x.Remove(It.IsAny<Guid>()));
             mockRepository.Setup(x => x.Add(new SaleModel()));
             var controller = new SaleAPIController(mockRepository.Object);
@@ -161,7 +161,7 @@ namespace XUnitTestProject
         public void PostSaleModelBadRequestTest()
         {
             // Arrange
-            var mockRepository = new Mock<IStorage>();
+            var mockRepository = new Mock<IStorage<SaleModel>>();
             var controller = new SaleAPIController(mockRepository.Object);
             controller.ModelState.AddModelError("Error", "Error");
             // Act
@@ -175,7 +175,7 @@ namespace XUnitTestProject
         public void PostSaleModelTest()
         {
             // Arrange
-            var mockRepository = new Mock<IStorage>();
+            var mockRepository = new Mock<IStorage<SaleModel>>();
             mockRepository.Setup(x => x.Add(new SaleModel()));
             var controller = new SaleAPIController(mockRepository.Object);
             // Act
@@ -194,7 +194,7 @@ namespace XUnitTestProject
         {
             var id = Guid.NewGuid();
             // Arrange
-            var mockRepository = new Mock<IStorage>();
+            var mockRepository = new Mock<IStorage<SaleModel>>();
             var controller = new SaleAPIController(mockRepository.Object);
             controller.ModelState.AddModelError("Error", "Error");
             // Act
@@ -208,7 +208,7 @@ namespace XUnitTestProject
         public void DeleteSaleModelNotFoundTest()
         {
             // Arrange
-            var mockRepository = new Mock<IStorage>().Object;
+            var mockRepository = new Mock<IStorage<SaleModel>>().Object;
             var controller = new SaleAPIController(mockRepository);
             var id = Guid.NewGuid();
             // Act
@@ -223,7 +223,7 @@ namespace XUnitTestProject
         {
             var id = Guid.NewGuid();
             // Arrange
-            var mockRepository = new Mock<IStorage>();
+            var mockRepository = new Mock<IStorage<SaleModel>>();
             mockRepository.Setup(x => x.Get(id)).Returns(new SaleModel() { Id = id});
             mockRepository.Setup(x => x.Remove(It.IsAny<Guid>()));
             var controller = new SaleAPIController(mockRepository.Object);

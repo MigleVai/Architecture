@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Architecture.Domain.Storage;
+using Architecture.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Architecture.API
 {
@@ -20,7 +22,10 @@ namespace Architecture.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddSingleton<IStorage, LocalStorage>();
+
+            services.AddDbContext<SaleDBContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("SaleDBContext")));
+            services.AddScoped(typeof(IStorage<>), typeof(LocalStorage<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

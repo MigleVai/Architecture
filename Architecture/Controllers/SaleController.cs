@@ -1,21 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 using Architecture.Domain;
-using Architecture.Domain.Storage;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Architecture.Controllers
 {
     public class SaleController : Controller
     {
-        private IStorage _storage;
+        private const string URL = "http://localhost:8080";
+        public async Task<IActionResult> Index()
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(URL);
+                var response = await client.GetAsync($"/api/saleBackend");
+                var result = JsonConvert.DeserializeObject<List<SaleModel>>(await response.Content.ReadAsStringAsync());
 
-        public SaleController(IStorage storage)
-        {
-            _storage = storage;
-        }
-        public IActionResult Index()
-        {
-            return View(_storage.GetAll());
+                return View(result);
+            }
         }
         public IActionResult Create()
         {
@@ -23,46 +29,70 @@ namespace Architecture.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(SaleModel sale)
+        public async Task<IActionResult> Create(SaleModel sale)
         {
             if (ModelState.IsValid)
             {
                 sale.Id = Guid.NewGuid();
-                _storage.Add(sale);
-                return RedirectToAction("Index", "Sale");
+                var content = new StringContent(JsonConvert.SerializeObject(sale), Encoding.UTF8, "application/json");
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(URL);
+                    var response = await client.PostAsync($"/api/saleBackend", content);
+                    return RedirectToAction("Index", "Sale");
+                }
             }
             return View();
         }
 
-        public IActionResult Edit(Guid id)
+        public async Task<IActionResult> Edit(Guid id)
         {
-            var sale = _storage.Get(id);
-            return View(sale);
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(URL);
+                var response = await client.GetAsync($"/api/saleBackend/{id.ToString()}");
+                var result = JsonConvert.DeserializeObject<SaleModel>(await response.Content.ReadAsStringAsync());
+                return View(result);
+            }
         }
 
         [HttpPost]
-        public IActionResult Edit(SaleModel sale)
+        public async Task<IActionResult> Edit(SaleModel sale)
         {
             if (ModelState.IsValid)
             {
-                _storage.Remove(sale.Id);
-                _storage.Add(sale);
-                return RedirectToAction("Index", "Sale");
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(URL);
+                    await client.DeleteAsync($"/api/saleBackend/{sale.Id.ToString()}");
+                    var content = new StringContent(JsonConvert.SerializeObject(sale), Encoding.UTF8, "application/json");
+                    var response = await client.PostAsync($"/api/saleBackend", content);
+                    return RedirectToAction("Index", "Sale");
+                }
             }
             return View();
         }
 
-        public IActionResult Delete(Guid id)
+        public async Task<IActionResult> Delete(Guid id)
         {
-            var sale = _storage.Get(id);
-            return View(sale);
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(URL);
+                var sale = await client.GetAsync($"/api/saleBackend/{id.ToString()}");
+                var result = JsonConvert.DeserializeObject<SaleModel>(await sale.Content.ReadAsStringAsync());
+                return View(result);
+            }
         }
 
         [HttpPost]
-        public IActionResult Delete(SaleModel sale)
+        public async Task<IActionResult> Delete(SaleModel sale)
         {
-            _storage.Remove(sale.Id);
-            return RedirectToAction("Index", "Sale");
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(URL);
+                await client.DeleteAsync($"/api/saleBackend/{sale.Id.ToString()}");
+                return RedirectToAction("Index", "Sale");
+            }
         }
     }
 }
