@@ -64,9 +64,8 @@ namespace Architecture.Controllers
                 using (var client = new HttpClient())
                 {
                     client.BaseAddress = new Uri(URL);
-                    await client.DeleteAsync($"/api/saleBackend/{sale.Id.ToString()}");
                     var content = new StringContent(JsonConvert.SerializeObject(sale), Encoding.UTF8, "application/json");
-                    var response = await client.PostAsync($"/api/saleBackend", content);
+                    var response = await client.PutAsync($"/api/saleBackend/{sale.Id.ToString()}", content);
                     return RedirectToAction("Index", "Sale");
                 }
             }
